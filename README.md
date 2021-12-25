@@ -1,2 +1,2 @@
-# AR-Sort-Visualizer
-An Augmented Reality iOS app, that helps visualizing different sorting algorithms.
+# Sort-Visualizer-iOS
+An iOS app, that helps visualizing different sorting algorithms.
