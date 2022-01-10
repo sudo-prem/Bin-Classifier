@@ -10,36 +10,54 @@ public struct DataView: View {
 }
 
 func makeList(_ n: Int) -> [Int] {
-    return (0..<n).map { _ in .random(in: 1...10) }
+    return (0..<n).map { _ in .random(in: 1...9) }
+}
+
+func getString(_ nums: [String]) -> String{
+    var res: String = ""
+    for num in nums {
+        res.append(num)
+    }
+    
+    return res
 }
 
 struct DataButtonView: View {
     @State private var showChart = false
-    @State private var buttonString = "Create Dataset"
+    @State private var buttonString = "Generate Dataset"
     
     var body: some View {
-        var randomData: [Int] = makeList(9)
-        // var randomString = randomData.map { String($0) }
-        
+        var randomData = [Int]()
+        var randomString = randomData.map { String($0) }
         
         ZStack {
             VStack (spacing: 50) {
+                
                 if(showChart) {
                     ChartView()
                 }
                 
                 Button {
-                    buttonString = "Change Dataset"
+                    buttonString = "Discard Dataset"
+                    
+                    // Generate string with random number
                     randomData = makeList(9) 
                     
-                    PlaygroundKeyValueStore.current["dataset"] = array.([])
+                    // Convert integer vector to character vector
+                    var randomString = randomData.map { String($0) }
+                    
+                    // Generate a string from vector
+                    var dataString = getString(randomString)
+                    
+                    // Store the string as global
+                    PlaygroundKeyValueStore.current["dataset"] = .string(dataString)
                     
                     withAnimation() {
-                        showChart = true
+                        showChart.toggle()
+                        if(showChart == false) {
+                            buttonString = "Generate Dataset"
+                        }
                     }
-                    
-                    // Store a dataset as global
-                    
                     // Navigate user to move to the next page to visualize using 2D and 3Ds
                 } label: {
                     Label(buttonString, systemImage: "wand.and.stars")

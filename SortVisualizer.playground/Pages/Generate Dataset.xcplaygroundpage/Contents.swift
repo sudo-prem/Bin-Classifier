@@ -6,8 +6,7 @@ struct GenerateData: View {
     var body: some View {
         ZStack {
             BackgroundAnimation()
-//            DataView()
-            ChartView()
+            DataView()
         }
     }
 }

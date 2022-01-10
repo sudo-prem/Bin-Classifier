@@ -7,11 +7,9 @@ public struct BubbleMainView: View {
     public var body: some View {
         ZStack {
             VStack (spacing: 50) {
-                // Display bar chart
-                
                 
                 Button {
-                    // 
+                    // Go to Bubble2D View
                 } label: {
                     Label("Visualize in 2D", systemImage: "chart.bar.xaxis")
                         .frame(width: 200 , height: 50, alignment: .center)

@@ -6,7 +6,12 @@ struct BubbleSort: View {
     var body: some View {
         ZStack {
             BackgroundAnimation()
-            BubbleMainView()
+            VStack (spacing: 50){
+                // Heading in White font for Bubble
+                
+                ChartView()
+                BubbleMainView()
+            }
         }
     }
 }
