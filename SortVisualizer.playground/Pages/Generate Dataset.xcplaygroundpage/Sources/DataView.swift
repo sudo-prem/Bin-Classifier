@@ -1,31 +1,16 @@
 import SwiftUI
 import PlaygroundSupport
 
-public struct DataView: View {
-    
-    public init() { }
-    public var body: some View {
-        DataButtonView()
-    }
-}
-
 func makeList(_ n: Int) -> [Int] {
     return Array(1...n).shuffled()
-}
-
-func getString(_ nums: [String]) -> String{
-    var res: String = ""
-    for num in nums {
-        res.append(num)
-    }
-    
-    return res
 }
 
 struct DataButtonView: View {
     @State private var showChart = false
     @State private var buttonString = "Generate Dataset"
     @State private var imageString = "wand.and.stars"
+    
+    var dataSet = DataFunctions()
     
     var body: some View {
         var randomData = [Int]()
@@ -45,14 +30,8 @@ struct DataButtonView: View {
                     // Generate string with random number
                     randomData = makeList(9) 
                     
-                    // Convert integer vector to character vector
-                    var randomString = randomData.map { String($0) }
-                    
-                    // Generate a string from vector
-                    var dataString = getString(randomString)
-                    
-                    // Store the string as global
-                    PlaygroundKeyValueStore.current["dataset"] = .string(dataString)
+                    // Stores data globally
+                    dataSet.putData(data: randomData)
                     
                     withAnimation() {
                         showChart.toggle()
@@ -81,3 +60,10 @@ struct DataButtonView: View {
     }
 }
 
+public struct DataView: View {
+    
+    public init() { }
+    public var body: some View {
+        DataButtonView()
+    }
+}

@@ -13,7 +13,7 @@ struct GraphView: View {
     public var body: some View {
         HStack (alignment: .lastTextBaseline){
             ForEach(data) { d in
-                var temp: CGFloat =  CGFloat(d.num * 10)
+                let temp: CGFloat =  CGFloat(d.num * 10)
                 
                 VStack {
                     Rectangle()
@@ -72,9 +72,9 @@ public struct ChartView: View {
     public init() { }
     
     public var body: some View {
-        var dataString: String = getData()
-        var data: [Int] = convertData(dataString)
-        var myData: [dataStruct] = convertDataStruct(data)
+        let dataString: String = getData()
+        let data: [Int] = convertData(dataString)
+        let myData: [dataStruct] = convertDataStruct(data)
         GraphView(data: myData)
     }  
 }
