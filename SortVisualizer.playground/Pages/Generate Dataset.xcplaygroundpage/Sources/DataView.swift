@@ -10,7 +10,7 @@ public struct DataView: View {
 }
 
 func makeList(_ n: Int) -> [Int] {
-    return (0..<n).map { _ in .random(in: 1...9) }
+    return Array(1...n).shuffled()
 }
 
 func getString(_ nums: [String]) -> String{
@@ -25,6 +25,7 @@ func getString(_ nums: [String]) -> String{
 struct DataButtonView: View {
     @State private var showChart = false
     @State private var buttonString = "Generate Dataset"
+    @State private var imageString = "wand.and.stars"
     
     var body: some View {
         var randomData = [Int]()
@@ -39,6 +40,7 @@ struct DataButtonView: View {
                 
                 Button {
                     buttonString = "Discard Dataset"
+                    imageString = "xmark.circle.fill"
                     
                     // Generate string with random number
                     randomData = makeList(9) 
@@ -56,11 +58,14 @@ struct DataButtonView: View {
                         showChart.toggle()
                         if(showChart == false) {
                             buttonString = "Generate Dataset"
+                            imageString = "wand.and.stars"
                         }
                     }
+                    
                     // Navigate user to move to the next page to visualize using 2D and 3Ds
+                        // TODO
                 } label: {
-                    Label(buttonString, systemImage: "wand.and.stars")
+                    Label(buttonString, systemImage: imageString)
                         .frame(width: 200 , height: 50, alignment: .center)
                         .font(.system(size: 20))
                 }
@@ -70,6 +75,7 @@ struct DataButtonView: View {
                 .cornerRadius(50)
                 .buttonBorderShape(.capsule)
                 .opacity(0.9)
+                .shadow(radius: 10)
             }
         }
     }
