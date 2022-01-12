@@ -1,2 +1,3 @@
 # Sort-Visualizer-iOS
-An iOS app, that helps visualizing different sorting algorithms.
+
+An Augmented Reality SwiftUI playground, that helps visualizing different sorting algorithms.
