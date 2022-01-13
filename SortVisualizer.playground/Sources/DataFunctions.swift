@@ -10,20 +10,22 @@ public struct DataFunctions {
     public func putData(data: [Int]) {
         // Convert [Int] to String
         var dataString = data.map { String($0) }
+        var searchString: String = "dataset"
         var res: String = ""
         for num in dataString {
             res.append(num)
         }
         
         // Store resultant String in PlaygroundKeyValueStore
-        PlaygroundKeyValueStore.current["dataset"] = .string(res)
+        PlaygroundKeyValueStore.current[searchString] = .string(res)
     }
     
     // Retreives data from global pool
     public func getData() -> [Int] {
         // Get string from PlaygroundKeyValueStore
         var dataString: String? = nil
-        if let keyValue = PlaygroundKeyValueStore.current["dataset"],
+        var searchString: String = "dataset"
+        if let keyValue = PlaygroundKeyValueStore.current[searchString],
            case .string(let animalType) = keyValue {
             dataString = animalType
         }

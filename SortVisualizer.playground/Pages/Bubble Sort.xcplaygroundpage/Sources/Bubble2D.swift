@@ -1,4 +1,5 @@
 import SwiftUI
+import Foundation
 import PlaygroundSupport
 
 
@@ -26,16 +27,35 @@ struct GraphUpdate: View {
     }
 }
 
+// Main Algorithm
+func bubbleSort(myData: [Int]) -> [Int]{
+    var data: [Int] = myData
+    
+    for i in 0..<data.count-1 {
+        for j in 0..<data.count-1 {
+            if data[j] > data[j+1] {
+                data.swapAt(j, j+1)
+                return data
+            }
+        }
+    } 
+    
+    return data
+}
 
 struct GraphView: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State var isSorted = false
-    var data = DataFunctions().getData()
     
     public var body: some View {
+        var data = DataFunctions().getData()
         VStack (spacing: 30) {
-            GraphUpdate(data: data, col: .red)
+            if !isSorted {
+                withAnimation() {
+                    GraphUpdate(data: data, col: .red)
+                }
+            }
         }
         .frame(width: 580, height: 580)
         .background(Color.white)
@@ -43,6 +63,9 @@ struct GraphView: View {
         .cornerRadius(15)
         .shadow(radius: 10)
         .onReceive(timer, perform: { _ in
+            var myData = data
+            myData = bubbleSort(myData: myData)
+            DataFunctions().putData(data: myData)
         })
     }
 }

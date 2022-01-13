@@ -10,8 +10,6 @@ struct DataButtonView: View {
     @State private var buttonString = "Generate Dataset"
     @State private var imageString = "wand.and.stars"
     
-    var dataSet = DataFunctions()
-    
     var body: some View {
         var randomData = [Int]()
         var randomString = randomData.map { String($0) }
@@ -31,7 +29,9 @@ struct DataButtonView: View {
                     randomData = makeList(9) 
                     
                     // Stores data globally
-                    dataSet.putData(data: randomData)
+                    DataFunctions().putData(data: randomData)
+                    DataFunctions().putData(data: randomData)
+                    DataFunctions().putData(data: randomData)
                     
                     withAnimation() {
                         showChart.toggle()
@@ -42,7 +42,7 @@ struct DataButtonView: View {
                     }
                     
                     // Navigate user to move to the next page to visualize using 2D and 3Ds
-                        // TODO
+                    // TODO
                 } label: {
                     Label(buttonString, systemImage: imageString)
                         .frame(width: 200 , height: 50, alignment: .center)
@@ -60,7 +60,7 @@ struct DataButtonView: View {
     }
 }
 
-public struct DataView: View {
+public struct GenerateData: View {
     
     public init() { }
     public var body: some View {

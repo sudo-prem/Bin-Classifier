@@ -2,6 +2,7 @@ import SwiftUI
 import PlaygroundSupport
 
 public struct BubbleMainView: View {
+    @State private var dataGenerated = false
     @State private var menuView = true
     @State private var view2D = false
     @State private var view3D = false
@@ -17,7 +18,7 @@ public struct BubbleMainView: View {
             
             if(menuView) {
                 // Display Chart
-                ChartView()
+                GenerateData()
                 
                 // Display Buttons
                 Button {
