@@ -3,8 +3,8 @@ import Foundation
 import PlaygroundSupport
 
 
-// Bubble Sort
-func bubbleSort(myData: [Int]) {
+// Merge Sort
+func mergeSort(myData: [Int]) {
     var data: [Int] = myData
     
     for i in 0..<data.count-1 {
@@ -42,7 +42,7 @@ struct GraphUpdate: View {
     }
 }
 
-public struct Bubble2D: View {
+public struct Merge2D: View {
     public init() { }
     
     // Data members
@@ -66,7 +66,7 @@ public struct Bubble2D: View {
         .cornerRadius(15)
         .shadow(radius: 10)
         .onReceive(timer, perform: { _ in
-            bubbleSort(myData: data)
+            mergeSort(myData: data)
             refresh.toggle()
             refresh.toggle()
         })

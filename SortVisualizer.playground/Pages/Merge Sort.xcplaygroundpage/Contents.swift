@@ -1,7 +1,8 @@
+
 import SwiftUI
 import PlaygroundSupport
 
-struct BubbleSort: View {
+struct MergeSort: View {
     
     var body: some View {
         ZStack {
@@ -9,10 +10,10 @@ struct BubbleSort: View {
             BackgroundAnimation()
             VStack (spacing: 50){
                 // Display Menu
-                BubbleMenu()
+                MergeMenu()
             }
         }
     }
 }
 
-PlaygroundPage.current.setLiveView(BubbleSort())
+PlaygroundPage.current.setLiveView(MergeSort())

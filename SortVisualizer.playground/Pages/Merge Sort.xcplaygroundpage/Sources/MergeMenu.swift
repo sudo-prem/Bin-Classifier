@@ -1,8 +1,7 @@
 import SwiftUI
 import PlaygroundSupport
 
-public struct BubbleMainView: View {
-    @State private var dataGenerated = false
+public struct MergeMenu: View {
     @State private var menuView = true
     @State private var view2D = false
     @State private var view3D = false
@@ -10,17 +9,18 @@ public struct BubbleMainView: View {
     public init() { }
     public var body: some View {
         VStack (spacing: 50) {
-            // Heading in White font for Bubble
-            Text("Bubble Sort")
+            // Title
+            Text("Merge Sort")
                 .fontWeight(.bold)
                 .font(.system(size: 40, design: .rounded))
                 .shadow(radius: 10)
             
+            // Main Menu
             if(menuView) {
                 // Display Chart
                 GenerateData()
                 
-                // Display Buttons
+                // Button for 2D
                 Button {
                     withAnimation() {
                         menuView = false
@@ -39,7 +39,7 @@ public struct BubbleMainView: View {
                 .opacity(0.9)
                 .shadow(radius: 10)
                 
-                
+                // Button for 3D
                 Button {
                     withAnimation() {
                         menuView = false
@@ -58,9 +58,10 @@ public struct BubbleMainView: View {
                 .opacity(0.9)
                 .shadow(radius: 10)
             } else if(view2D) {
+                
                 VStack (spacing: 50) {
                     // Sort in 2D
-                    Bubble2D()
+                    Merge2D()
                     
                     // Back Button
                     Button {
@@ -84,28 +85,10 @@ public struct BubbleMainView: View {
             } else if(view3D) {
                 VStack (spacing: 50) {
                     // Sort in 3D
-                    Bubble3D()
-                    
-                    // Back Button
-                    Button {
-                        withAnimation() {
-                            menuView = true
-                            view2D = false
-                        }
-                    } label: {
-                        Image(systemName: "arrow.uturn.backward.circle.fill")
-                            .frame(width: 30 , height: 30)
-                            .font(.system(size: 40))
-                    }
-                    .foregroundColor(.red)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(50)
-                    .buttonBorderShape(.capsule)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
+                    Merge3D()
                 }
             }
         }
     }
 }
+
