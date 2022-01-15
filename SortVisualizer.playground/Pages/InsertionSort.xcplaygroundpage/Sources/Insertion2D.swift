@@ -3,30 +3,22 @@ import Foundation
 import PlaygroundSupport
 
 
-// Bubble Sort
-struct bSort {
-    static var x: Int = 0
+// Insertion Sort
+func insertionSort(data: [Int]) {
+    var size = data.count
+    var arr: [Int] = data
     
-    func bubbleSort(myData: [Int]) {
-        var data: [Int] = myData
-        var sorted = false
-        
-        while sorted == false {
-            sorted = true
-            for i in (bSort.x)...data.count - 2 {
-                if data[i] > data[i+1] {
-                    sorted = false
-                    data.swapAt(i, i+1)
-                    bSort.x = i
-                    DataFunctions().putData(data: data)
-                    return
-                }
-            }
-            bSort.x = 0
-            if data == data.sorted() {
+    for i in 1..<size {
+        var j = i;
+        while j > 0 && arr[j] < arr[j - 1]
+        {
+            var j = i
+            while j > 0 && arr[j] < arr[j - 1]
+            {
+                arr.swapAt(j, j-1)
+                DataFunctions().putData(data: arr)
                 return
             }
-            self.bubbleSort(myData: data)
         }
     }
 }
@@ -55,7 +47,7 @@ struct GraphUpdate: View {
     }
 }
 
-public struct Bubble2D: View {
+public struct Insertion2D: View {
     public init() { }
     
     // Data members
@@ -79,7 +71,7 @@ public struct Bubble2D: View {
         .cornerRadius(15)
         .shadow(radius: 10)
         .onReceive(timer, perform: { _ in
-            bSort().bubbleSort(myData: data)
+            insertionSort(data: data)
             refresh.toggle()
             refresh.toggle()
         })

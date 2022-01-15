@@ -4,18 +4,72 @@ import PlaygroundSupport
 
 
 // Merge Sort
-func mergeSort(myData: [Int]) {
-    var data: [Int] = myData
+func Merge(data: [Int], l: Int, mid: Int, h: Int) -> Bool {
+    var arr: [Int] = data
+    var res = [Int](repeating: 0, count: h+1)
+    var i = l, j = mid + 1, k = 0
     
-    for i in 0..<data.count-1 {
-        for j in 0..<data.count-1 {
-            if data[j] > data[j+1] {
-                data.swapAt(j, j+1)
-                DataFunctions().putData(data: data)
+    while i <= mid && j <= h {
+        if arr[i] < arr[j] {
+            res[k] = arr[i];
+            k += 1
+            i += 1
+        } else {
+            res[k] = arr[j]
+            k += 1
+            j += 1
+        }
+    }
+    while i <= mid {
+        res[k] = arr[i];
+        k += 1
+        i += 1
+    }
+    while j <= h {
+        res[k] = arr[j];
+        k += 1
+        j += 1
+    }
+    
+    k = 0;
+    var t = l
+    while t <= h {
+        arr[t] = res[k];
+        t += 1
+        k += 1
+    }
+    
+    if data == arr {
+        return false
+    }
+    
+    DataFunctions().putData(data: arr)
+    return true
+}
+
+func mergeSort(data: [Int]) {
+    var end = data.count
+    var i = 2, j = 0, mid = 0, l = 0, h = 0
+    
+    while i < data.count {
+        j = 0
+        while j + i - 1 < end {
+            l = j
+            h = j + i - 1
+            mid = (l)/2 + (h)/2
+            
+            if Merge(data: data, l: l, mid: mid, h: h) {
                 return
             }
+            j += i
         }
-    } 
+        
+        i *= 2
+    }
+    
+    if (i/2) < end {
+        Merge(data: data, l: 0, mid: i / 2 - 1, h: end - 1)
+    }
 }
 
 
@@ -46,7 +100,7 @@ public struct Merge2D: View {
     public init() { }
     
     // Data members
-    let timer = Timer.publish(every: 1.2, on: .main, in: .common).autoconnect()
+    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var isSorted = false
     @State var refresh: Bool = true
     
@@ -66,7 +120,7 @@ public struct Merge2D: View {
         .cornerRadius(15)
         .shadow(radius: 10)
         .onReceive(timer, perform: { _ in
-            mergeSort(myData: data)
+            mergeSort(data: data)
             refresh.toggle()
             refresh.toggle()
         })
