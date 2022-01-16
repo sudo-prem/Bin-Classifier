@@ -3,7 +3,6 @@ import PlaygroundSupport
 
 
 public struct DataFunctions {
-    
     public init() { }
     
     // Stores data globally across all pages
@@ -37,7 +36,6 @@ public struct DataFunctions {
                 data.append(intValue)
             }
         }
-        
         return data
     }
 }

@@ -28,7 +28,6 @@ public struct ChartView: View {
         .opacity(0.85)
         .cornerRadius(15)
         .shadow(radius: 10)
-        
     }  
 }
 

@@ -6,18 +6,15 @@ func makeList(_ n: Int) -> [Int] {
 }
 
 public struct GenerateData: View {
-    
     public init() { }
     @State private var showChart = false
     
     public var body: some View {
-        
         var randomData = [Int]()
         var randomString = randomData.map { String($0) }
         
         ZStack {
             VStack (spacing: 50) {
-                
                 if showChart {
                     ChartView()
                 } else {

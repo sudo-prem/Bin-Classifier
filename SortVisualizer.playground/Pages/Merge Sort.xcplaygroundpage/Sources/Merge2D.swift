@@ -2,7 +2,6 @@ import SwiftUI
 import Foundation
 import PlaygroundSupport
 
-
 // Merge Sort
 func Merge(data: [Int], l: Int, mid: Int, h: Int) -> Bool {
     var arr: [Int] = data

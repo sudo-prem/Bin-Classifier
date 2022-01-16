@@ -2,7 +2,6 @@ import SwiftUI
 import Foundation
 import PlaygroundSupport
 
-
 // Insertion Sort
 func insertionSort(data: [Int]) {
     var size = data.count
@@ -22,7 +21,6 @@ func insertionSort(data: [Int]) {
         }
     }
 }
-
 
 struct GraphUpdate: View {
     var data: [Int]

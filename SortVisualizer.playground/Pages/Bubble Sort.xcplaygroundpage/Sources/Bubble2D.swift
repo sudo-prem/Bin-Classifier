@@ -4,7 +4,7 @@ import PlaygroundSupport
 
 
 // Bubble Sort
-struct bSort {
+public struct bSort {
     static var x: Int = 0
     
     func bubbleSort(myData: [Int]) {
