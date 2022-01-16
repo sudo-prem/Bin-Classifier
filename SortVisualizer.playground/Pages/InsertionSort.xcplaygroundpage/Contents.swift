@@ -2,7 +2,7 @@
 import SwiftUI
 import PlaygroundSupport
 
-struct InsertionSort: View {
+struct InsertionSort: View { 
     
     var body: some View {
         ZStack {
