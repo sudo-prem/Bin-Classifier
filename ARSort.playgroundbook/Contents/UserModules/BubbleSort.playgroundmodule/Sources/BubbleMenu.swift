@@ -2,20 +2,25 @@ import SwiftUI
 import PlaygroundSupport
 
 public struct BubbleMenu: View {
+    // Boolean values to show and hide Views
     @State private var BG = true
     @State private var menuView = true
     @State private var view2D = false
     @State private var view3D = false
     
     public init() { }
+    
     public var body: some View {
         ZStack {
+            // Stop Background animation in ARView
             if BG {
                 BackgroundAnimation(shape: "Circle")
             }
+            
             VStack (spacing: 50) {
                 // Main Menu
                 if(menuView) {
+            
                     // Title
                     Text("Bubble Sort")
                         .fontWeight(.bold)
@@ -27,6 +32,10 @@ public struct BubbleMenu: View {
                     
                     // Button for 2D
                     Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
                         withAnimation() {
                             menuView = false
                             view2D = true
@@ -40,12 +49,15 @@ public struct BubbleMenu: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(50)
-//                    .buttonBorderShape(.capsule)
                     .opacity(0.9)
                     .shadow(radius: 10)
                     
                     // Button for 3D
                     Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
                         withAnimation() {
                             BG = false
                             menuView = false
@@ -60,11 +72,11 @@ public struct BubbleMenu: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(50)
-//                    .buttonBorderShape(.capsule)
                     .opacity(0.9)
                     .shadow(radius: 10)
                 } else if(view2D) {
                     VStack (spacing: 50) {
+                        
                         // Title
                         Text("Bubble Sort")
                             .fontWeight(.bold)
@@ -76,6 +88,10 @@ public struct BubbleMenu: View {
                         
                         // Back Button
                         Button {
+                            // Add Sound Effect
+                            SoundManager.instance.playSound(sound: .button)
+                            
+                            // Add Animation
                             withAnimation() {
                                 menuView = true
                                 view2D = false
@@ -90,7 +106,6 @@ public struct BubbleMenu: View {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
-//                        .buttonBorderShape(.capsule)
                         .opacity(0.9)
                         .shadow(radius: 10)
                     }
@@ -100,6 +115,10 @@ public struct BubbleMenu: View {
                         
                         // Back Button
                         Button {
+                            // Add Sound Effect
+                            SoundManager.instance.playSound(sound: .button)
+                            
+                            // Add Animation
                             withAnimation() {
                                 menuView = true
                                 view2D = false
@@ -115,7 +134,6 @@ public struct BubbleMenu: View {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
-//                        .buttonBorderShape(.capsule)
                         .opacity(0.9)
                         .shadow(radius: 10)
                         .frame(maxHeight: .infinity, alignment: .bottom)

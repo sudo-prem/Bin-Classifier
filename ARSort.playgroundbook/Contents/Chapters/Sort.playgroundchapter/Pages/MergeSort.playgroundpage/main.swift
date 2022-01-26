@@ -16,7 +16,7 @@ struct MergeSort: View {
     var body: some View {
         ZStack {
             
-            BackgroundAnimation()
+            BackgroundAnimation(shape: "RoundedRectangle")
             VStack (spacing: 50){
                 // Display Menu
                 MergeMenu()

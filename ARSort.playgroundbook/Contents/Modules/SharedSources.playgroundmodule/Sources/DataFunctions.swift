@@ -3,6 +3,7 @@ import PlaygroundSupport
 
 
 public struct DataFunctions {
+    // Public init to use in other views
     public init() { }
     
     // Stores data globally across all pages

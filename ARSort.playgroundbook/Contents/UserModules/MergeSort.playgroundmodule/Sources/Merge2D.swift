@@ -2,6 +2,7 @@ import SwiftUI
 import Foundation
 import PlaygroundSupport
 
+
 // Merge Sort
 func Merge(data: [Int], l: Int, mid: Int, h: Int) -> Bool {
     var arr: [Int] = data
@@ -46,6 +47,7 @@ func Merge(data: [Int], l: Int, mid: Int, h: Int) -> Bool {
     return true
 }
 
+
 func mergeSort(data: [Int]) {
     let end = data.count
     var i = 2, j = 0, mid = 0, l = 0, h = 0
@@ -74,6 +76,7 @@ func mergeSort(data: [Int]) {
 
 struct GraphUpdateMerge: View {
     var data: [Int]
+    var color: Color
     
     var body: some View {
         HStack (alignment: .lastTextBaseline){
@@ -82,7 +85,7 @@ struct GraphUpdateMerge: View {
                 
                 VStack {
                     Rectangle()
-                        .fill(.red)
+                        .fill(color)
                         .frame(width: 40, height: temp)
                         .cornerRadius(5)
                         .shadow(radius: 3)
@@ -95,13 +98,16 @@ struct GraphUpdateMerge: View {
     }
 }
 
+
 public struct Merge2D: View {
     public init() { }
     
-    // Data members
-    let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    // Timer to Update view
+    let timer = Timer.publish(every: 1.2, on: .main, in: .common).autoconnect()
     @State var isSorted = false
     @State var refresh: Bool = true
+    @State var bell: Bool = true
+    @State var color: Color = .red
     
     public var body: some View {
         let data = DataFunctions().getData()
@@ -109,19 +115,40 @@ public struct Merge2D: View {
         VStack (spacing: 30) {
             if refresh {
                 withAnimation() {
-                    GraphUpdateMerge(data: data)
+                    GraphUpdateMerge(data: data, color: color)
                 }
             }
         }
-        .frame(width: 580, height: 580)
+        .frame(width: 480, height: 490)
         .background(Color.white)
         .opacity(0.85)
         .cornerRadius(15)
         .shadow(radius: 10)
-        .onReceive(timer, perform: { _ in
-            mergeSort(data: data)
-            refresh.toggle()
-            refresh.toggle()
-        })
+        .onReceive(
+            timer, perform: { _ in
+                mergeSort(data: data)
+                if(isSorted == false) {
+                    if data.sorted() == data {
+                        isSorted = true
+                        
+                        // Change color to green
+                        color = .green
+                        
+                        if bell {
+                            // Add Sound Effect
+                            SoundManager.instance.playSound(sound: .bell)
+                            bell = false
+                        }
+                    } else {
+                        // Toggle refresh
+                        refresh.toggle()
+                        refresh.toggle()
+                        
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .whoosh)
+                    }
+                }
+            }
+        )
     }
 }

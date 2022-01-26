@@ -8,24 +8,31 @@ struct SwiftUIARSCNViewMerge: UIViewRepresentable {
     
     func makeUIView(context: Context) -> ARSCNView {
         let config = ARWorldTrackingConfiguration()
-        
         arKitSceneView.session.run(config)
+        
         return arKitSceneView
     }
     
     func updateUIView(_ uiView: ARSCNView, context: Context) {
-        if refresh { }
-        let data = DataFunctions().getData()
-        if data != data.sorted() {
+        if refresh {
+            // Remove all SCNodes
             arKitSceneView.scene.rootNode.enumerateChildNodes { (node, stop) in
                 node.removeFromParentNode()
             }
-            mergeSort(data: data)
-            plotGraph()
+            
+            let data = DataFunctions().getData()
+            if data == data.sorted() {
+                plotGraph(color: UIColor.green)
+                
+                // Add Sound Effect
+                SoundManager.instance.playSound(sound: .bell)
+            } else {
+                plotGraph(color: UIColor.red)
+            }
         }
     }
     
-    func plotGraph() {
+    func plotGraph(color: UIColor) {
         let data = DataFunctions().getData()
         var X: Float = -0.3
         var Y: CGFloat
@@ -35,7 +42,7 @@ struct SwiftUIARSCNViewMerge: UIViewRepresentable {
             let cube = SCNBox(width: 0.06, height: Y, length: 0.06, chamferRadius: 0.01)
             
             let material = SCNMaterial()
-            material.diffuse.contents = UIColor.red
+            material.diffuse.contents = color
             cube.materials = [material]
             
             let cubeNode = SCNNode(geometry: cube)
@@ -49,17 +56,28 @@ struct SwiftUIARSCNViewMerge: UIViewRepresentable {
 
 
 struct Merge3D: View {
-    @State private var refresh = true
+    @State private var refresh = false
+    let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
             let swiftUIARSCNView = SwiftUIARSCNViewMerge(refresh: $refresh)
             swiftUIARSCNView.edgesIgnoringSafeArea(.all)
             
-            // Button to the bottom right
+            // Button to refresh view
             Button (action: {
-                self.refresh.toggle()
-            }){ 
+                // Add Sound Effect
+                SoundManager.instance.playSound(sound: .arbutton)
+                
+                mergeSort(data: DataFunctions().getData())
+                refresh.toggle()
+                
+                if(refresh == false) {
+                    refresh.toggle()
+                }
+            })
+            {
+                // Style the button
                 Image(systemName: "cube.transparent")
                     .frame(width: 30 , height: 30)
                     .font(.system(size: 40))
@@ -68,11 +86,17 @@ struct Merge3D: View {
             .padding()
             .background(Color.white)
             .cornerRadius(50)
-//            .buttonBorderShape(.capsule)
             .opacity(0.9)
             .shadow(radius: 10)
             .frame(maxHeight: .infinity, alignment: .bottom)
             .padding(100)
         }
+        .onReceive(
+            timer, perform: { _ in
+                if self.refresh == true {
+                    refresh = false
+                }
+            }
+        )
     }
 }

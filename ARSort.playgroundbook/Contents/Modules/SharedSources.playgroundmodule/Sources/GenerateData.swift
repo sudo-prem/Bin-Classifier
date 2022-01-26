@@ -6,7 +6,10 @@ func makeList(_ n: Int) -> [Int] {
 }
 
 public struct GenerateData: View {
+    // Public init to use in other views
     public init() { }
+    
+    //
     @State private var showChart = false
     
     public var body: some View {
@@ -18,6 +21,9 @@ public struct GenerateData: View {
                     ChartView()
                 } else {
                     Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
                         // Generate string with random number
                         randomData = makeList(9)
                         
@@ -36,7 +42,6 @@ public struct GenerateData: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(50)
-//                    .buttonBorderShape(.capsule)
                     .opacity(0.9)
                     .shadow(radius: 10)
                 }

@@ -31,17 +31,19 @@ public struct bSort {
     }
 }
 
+
 struct GraphUpdateBubble: View {
     var data: [Int]
+    var color: Color
     
     var body: some View {
-        HStack (alignment: .lastTextBaseline){
+        HStack (alignment: .lastTextBaseline) {
             ForEach(0..<data.count) { d in
                 let temp: CGFloat =  CGFloat(data[d] * 45)
                 
                 VStack {
                     Rectangle()
-                        .fill(.red)
+                        .fill(color)
                         .frame(width: 40, height: temp)
                         .cornerRadius(5)
                         .shadow(radius: 3)
@@ -54,6 +56,7 @@ struct GraphUpdateBubble: View {
     }
 }
 
+
 public struct Bubble2D: View {
     public init() { }
     
@@ -61,6 +64,8 @@ public struct Bubble2D: View {
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     @State var isSorted = false
     @State var refresh: Bool = true
+    @State var bell: Bool = true
+    @State var color: Color = .red
     
     public var body: some View {
         let data = DataFunctions().getData()
@@ -68,19 +73,40 @@ public struct Bubble2D: View {
         VStack (spacing: 30) {
             if refresh {
                 withAnimation() {
-                    GraphUpdateBubble(data: data)
+                    GraphUpdateBubble(data: data, color: color)
                 }
             }
         }
-        .frame(width: 580, height: 580)
+        .frame(width: 480, height: 490)
         .background(Color.white)
         .opacity(0.85)
         .cornerRadius(15)
         .shadow(radius: 10)
-        .onReceive(timer, perform: { _ in
-            bSort().bubbleSort(myData: data)
-            refresh.toggle()
-            refresh.toggle()
-        })
+        .onReceive(
+            timer, perform: { _ in
+                bSort().bubbleSort(myData: data)
+                if(isSorted == false) {
+                    if data.sorted() == data {
+                        isSorted = true
+                        
+                        // Change color to green
+                        color = .green
+                        
+                        if bell {
+                            // Add Sound Effect
+                            SoundManager.instance.playSound(sound: .bell)
+                            bell = false
+                        }
+                    } else {
+                        // Toggle refresh
+                        refresh.toggle()
+                        refresh.toggle()
+                        
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .whoosh)
+                    }
+                }
+            }
+        )
     }
 }

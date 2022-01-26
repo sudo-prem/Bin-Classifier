@@ -27,6 +27,10 @@ public struct MergeMenu: View {
                     
                     // Button for 2D
                     Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
                         withAnimation() {
                             menuView = false
                             view2D = true
@@ -40,12 +44,15 @@ public struct MergeMenu: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(50)
-//                    .buttonBorderShape(.capsule)
                     .opacity(0.9)
                     .shadow(radius: 10)
                     
                     // Button for 3D
                     Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
                         withAnimation() {
                             BG = false
                             menuView = false
@@ -60,7 +67,6 @@ public struct MergeMenu: View {
                     .padding()
                     .background(Color.white)
                     .cornerRadius(50)
-//                    .buttonBorderShape(.capsule)
                     .opacity(0.9)
                     .shadow(radius: 10)
                 } else if(view2D) {
@@ -76,6 +82,10 @@ public struct MergeMenu: View {
                         
                         // Back Button
                         Button {
+                            // Add Sound Effect
+                            SoundManager.instance.playSound(sound: .button)
+                            
+                            // Add Animation
                             withAnimation() {
                                 menuView = true
                                 view2D = false
@@ -90,21 +100,24 @@ public struct MergeMenu: View {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
-//                        .buttonBorderShape(.capsule)
                         .opacity(0.9)
                         .shadow(radius: 10)
                     }
                 } else if(view3D) {
                     ZStack {
+                        // ARView
                         Merge3D()
                         
                         // Back Button
                         Button {
+                            // Add Sound Effect
+                            SoundManager.instance.playSound(sound: .button)
+                            
+                            // Add Animation
                             withAnimation() {
                                 menuView = true
-                                view2D = false
                                 view3D = false
-                                BG = true
+                                view2D = false
                             }
                         } label: {
                             Image(systemName: "arrow.uturn.backward.circle.fill")
@@ -115,7 +128,6 @@ public struct MergeMenu: View {
                         .padding()
                         .background(Color.white)
                         .cornerRadius(50)
-//                        .buttonBorderShape(.capsule)
                         .opacity(0.9)
                         .shadow(radius: 10)
                         .frame(maxHeight: .infinity, alignment: .bottom)

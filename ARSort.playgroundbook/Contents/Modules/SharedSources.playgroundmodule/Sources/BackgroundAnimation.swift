@@ -1,5 +1,6 @@
 import SwiftUI
 
+// Global Variable to be made use by all classes inside BackgroundAnimation.swift
 var choice: String = String()
 
 public struct BackgroundAnimation: View {
@@ -25,6 +26,7 @@ class CloudProvider: ObservableObject {
     }
 }
 
+// Shape that has properties of a triangle
 struct Triangle: Shape {
     func path(in rect: CGRect) -> Path {
         var path = Path()
@@ -53,7 +55,7 @@ struct Cloud: View {
                 .frame(height: proxy.size.height /  provider.frameHeightRatio)
                 .offset(provider.offset)
                 .rotationEffect(.init(degrees: move ? rotationStart : rotationStart + 360) )
-                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
+                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false), value: move)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.8)
                 .onAppear {
@@ -67,7 +69,7 @@ struct Cloud: View {
                     .frame(height: proxy.size.height /  provider.frameHeightRatio)
                     .offset(provider.offset)
                     .rotationEffect(.init(degrees: move ? rotationStart : rotationStart + 360) )
-                    .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
+                    .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false), value: move)
                     .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                     .opacity(0.8)
                     .onAppear {
@@ -82,7 +84,7 @@ struct Cloud: View {
                 .frame(height: proxy.size.height /  provider.frameHeightRatio)
                 .offset(provider.offset)
                 .rotationEffect(.init(degrees: move ? rotationStart : rotationStart + 360) )
-                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
+                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false), value: move)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.8)
                 .onAppear {
@@ -94,7 +96,7 @@ struct Cloud: View {
                 .frame(height: proxy.size.height /  provider.frameHeightRatio)
                 .offset(provider.offset)
                 .rotationEffect(.init(degrees: move ? rotationStart : rotationStart + 360) )
-                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false))
+                .animation(Animation.linear(duration: duration).repeatForever(autoreverses: false), value: move)
                 .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
                 .opacity(0.8)
                 .onAppear {
@@ -137,6 +139,7 @@ struct FloatingClouds: View {
     }
 }
 
+// Extending Color class to pass HEX code for a color
 extension Color {
     init(hex: String) {
         let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)

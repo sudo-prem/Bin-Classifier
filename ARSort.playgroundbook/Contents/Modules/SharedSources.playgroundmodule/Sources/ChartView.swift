@@ -3,11 +3,13 @@ import PlaygroundSupport
 
 
 public struct ChartView: View {
+    // Public init to use in other views
     public init() { }
     
     public var body: some View {
         let data: [Int] = DataFunctions().getData()
         
+        // HStack for aligning vertical bars
         HStack (alignment: .lastTextBaseline){
             ForEach(0..<data.count) { d in
                 let temp: CGFloat =  CGFloat(data[d] * 10)

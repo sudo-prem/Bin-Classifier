@@ -17,20 +17,7 @@
 		<key>Added</key>
 		<array/>
 		<key>Modified</key>
-		<array>
-			<dict>
-				<key>Diff</key>
-				<string>Chapters/Prelude.playgroundchapter/Pages/Prelude.playgroundpage/main.swift.delta</string>
-				<key>File</key>
-				<string>Chapters/Prelude.playgroundchapter/Pages/Prelude.playgroundpage/main.swift</string>
-			</dict>
-			<dict>
-				<key>Diff</key>
-				<string>Chapters/Sort.playgroundchapter/Pages/MergeSort.playgroundpage/main.swift.delta</string>
-				<key>File</key>
-				<string>Chapters/Sort.playgroundchapter/Pages/MergeSort.playgroundpage/main.swift</string>
-			</dict>
-		</array>
+		<array/>
 		<key>Removed</key>
 		<array/>
 		<key>Replaced</key>
