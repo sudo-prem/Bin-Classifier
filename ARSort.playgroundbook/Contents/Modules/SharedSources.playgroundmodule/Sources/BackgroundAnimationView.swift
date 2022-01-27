@@ -1,6 +1,6 @@
 import SwiftUI
 
-// Global Variable to be made use by all classes inside BackgroundAnimation.swift
+// Global variable to store animation type
 var choice: String = String()
 
 public struct BackgroundAnimation: View {
@@ -76,8 +76,6 @@ struct Cloud: View {
                         move.toggle()
                     }
             }
-            
-            
         } else if choice == "Circle" {
             Circle()
                 .fill(color)
@@ -215,6 +213,4 @@ struct Theme {
         }
     }
 }
-
-
 

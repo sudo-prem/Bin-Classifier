@@ -6,7 +6,6 @@
 //  The Swift file containing the source code edited by the user of this playground book.
 //
 //#-end-hidden-code
-
 import SwiftUI
 import PlaygroundSupport
 
@@ -14,8 +13,8 @@ struct InsertionSort: View {
     
     var body: some View {
         ZStack {
-            
-            VStack (spacing: 50){
+            BackgroundAnimation(shape: "Rectangle")
+            VStack (spacing: 50) {
                 // Display Menu
                 InsertionMenu()
             }

@@ -26,8 +26,8 @@ public struct DataFunctions {
         var dataString: String? = nil
         let searchString: String = "dataset"
         if let keyValue = PlaygroundKeyValueStore.current[searchString],
-           case .string(let animalType) = keyValue {
-            dataString = animalType
+           case .string(let myData) = keyValue {
+            dataString = myData
         }
         
         // Convert String to [Int]
@@ -40,4 +40,3 @@ public struct DataFunctions {
         return data
     }
 }
-
