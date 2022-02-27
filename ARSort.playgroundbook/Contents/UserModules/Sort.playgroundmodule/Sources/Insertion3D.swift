@@ -2,7 +2,7 @@ import SwiftUI
 import ARKit
 import RealityKit
 
-struct SwiftUIARSCNViewBubble: UIViewRepresentable {
+struct SwiftUIARSCNViewInsertion: UIViewRepresentable {
     @Binding var refresh: Bool
     let arKitSceneView = ARSCNView(frame: .zero)
     
@@ -20,7 +20,7 @@ struct SwiftUIARSCNViewBubble: UIViewRepresentable {
                 node.removeFromParentNode()
             }
             
-            let data = DataFunctions().getData()
+            let data = DataManager().getData()
             if data == data.sorted() {
                 plotGraph(color: UIColor.green)
                 
@@ -33,7 +33,7 @@ struct SwiftUIARSCNViewBubble: UIViewRepresentable {
     }
     
     func plotGraph(color: UIColor) {
-        let data = DataFunctions().getData()
+        let data = DataManager().getData()
         var X: Float = -0.3
         var Y: CGFloat
         
@@ -55,13 +55,13 @@ struct SwiftUIARSCNViewBubble: UIViewRepresentable {
 }
 
 
-struct Bubble3D: View {
+struct Insertion3D: View {
     @State private var refresh = false
     let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
-            let swiftUIARSCNView = SwiftUIARSCNViewBubble(refresh: $refresh)
+            let swiftUIARSCNView = SwiftUIARSCNViewInsertion(refresh: $refresh)
             swiftUIARSCNView.edgesIgnoringSafeArea(.all)
             
             // Button to refresh view
@@ -69,13 +69,14 @@ struct Bubble3D: View {
                 // Add Sound Effect
                 SoundManager.instance.playSound(sound: .arbutton)
                 
-                bSort().bubbleSort(myData: DataFunctions().getData())
+                insertionSort(data: DataManager().getData())
                 refresh.toggle()
                 
                 if(refresh == false) {
                     refresh.toggle()
                 }
-            }){
+            })
+            {
                 // Style the button
                 Image(systemName: "cube.transparent")
                     .frame(width: 30 , height: 30)

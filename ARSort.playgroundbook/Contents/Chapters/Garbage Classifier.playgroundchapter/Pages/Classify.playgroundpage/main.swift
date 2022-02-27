@@ -9,17 +9,12 @@
 import SwiftUI
 import PlaygroundSupport
 
-struct BubbleSort: View {
+struct SortView: View {
     
     var body: some View {
-        ZStack {
-            BackgroundAnimation(shape: "Circle")
-            VStack (spacing: 50) {
-                // Display Menu
-                BubbleMenu()
-            }
-        }
+        // Display Menu
+        MenuView()
     }
 }
 
-PlaygroundPage.current.setLiveView(BubbleSort())
+PlaygroundPage.current.setLiveView(SortView())

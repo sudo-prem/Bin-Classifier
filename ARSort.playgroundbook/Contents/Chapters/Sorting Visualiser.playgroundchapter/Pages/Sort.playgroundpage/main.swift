@@ -9,17 +9,12 @@
 import SwiftUI
 import PlaygroundSupport
 
-struct InsertionSort: View {
+struct SortView: View {
     
     var body: some View {
-        ZStack {
-            BackgroundAnimation(shape: "Rectangle")
-            VStack (spacing: 50) {
-                // Display Menu
-                InsertionMenu()
-            }
-        }
+        // Display Menu
+        MenuView()
     }
 }
 
-PlaygroundPage.current.setLiveView(InsertionSort())
+PlaygroundPage.current.setLiveView(SortView())

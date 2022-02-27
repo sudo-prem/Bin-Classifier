@@ -2,7 +2,7 @@ import SwiftUI
 import ARKit
 import RealityKit
 
-struct SwiftUIARSCNViewInsertion: UIViewRepresentable {
+struct SwiftUIARSCNViewMerge: UIViewRepresentable {
     @Binding var refresh: Bool
     let arKitSceneView = ARSCNView(frame: .zero)
     
@@ -20,7 +20,7 @@ struct SwiftUIARSCNViewInsertion: UIViewRepresentable {
                 node.removeFromParentNode()
             }
             
-            let data = DataFunctions().getData()
+            let data = DataManager().getData()
             if data == data.sorted() {
                 plotGraph(color: UIColor.green)
                 
@@ -33,7 +33,7 @@ struct SwiftUIARSCNViewInsertion: UIViewRepresentable {
     }
     
     func plotGraph(color: UIColor) {
-        let data = DataFunctions().getData()
+        let data = DataManager().getData()
         var X: Float = -0.3
         var Y: CGFloat
         
@@ -55,13 +55,13 @@ struct SwiftUIARSCNViewInsertion: UIViewRepresentable {
 }
 
 
-struct Insertion3D: View {
+struct Merge3D: View {
     @State private var refresh = false
     let timer = Timer.publish(every: 0.25, on: .main, in: .common).autoconnect()
     
     var body: some View {
         ZStack {
-            let swiftUIARSCNView = SwiftUIARSCNViewInsertion(refresh: $refresh)
+            let swiftUIARSCNView = SwiftUIARSCNViewMerge(refresh: $refresh)
             swiftUIARSCNView.edgesIgnoringSafeArea(.all)
             
             // Button to refresh view
@@ -69,7 +69,7 @@ struct Insertion3D: View {
                 // Add Sound Effect
                 SoundManager.instance.playSound(sound: .arbutton)
                 
-                insertionSort(data: DataFunctions().getData())
+                mergeSort(data: DataManager().getData())
                 refresh.toggle()
                 
                 if(refresh == false) {

@@ -3,33 +3,41 @@ import Foundation
 import PlaygroundSupport
 
 
-// Insertion Sort
-func insertionSort(data: [Int]) {
-    let size = data.count
-    var arr: [Int] = data
+// Bubble Sort
+public struct bSort {
+    static var x: Int = 0
     
-    for i in 1..<size {
-        let j = i;
-        while j > 0 && arr[j] < arr[j - 1]
-        {
-            let j = i
-            while j > 0 && arr[j] < arr[j - 1]
-            {
-                arr.swapAt(j, j-1)
-                DataFunctions().putData(data: arr)
+    func bubbleSort(myData: [Int]) {
+        var data: [Int] = myData
+        var sorted = false
+        
+        while sorted == false {
+            sorted = true
+            for i in (bSort.x)...data.count - 2 {
+                if data[i] > data[i+1] {
+                    sorted = false
+                    data.swapAt(i, i+1)
+                    bSort.x = i
+                    DataManager().putData(data: data)
+                    return
+                }
+            }
+            bSort.x = 0
+            if data == data.sorted() {
                 return
             }
+            self.bubbleSort(myData: data)
         }
     }
 }
 
 
-struct GraphUpdateInsertion: View {
+struct GraphUpdateBubble: View {
     var data: [Int]
     var color: Color
     
     var body: some View {
-        HStack (alignment: .lastTextBaseline){
+        HStack (alignment: .lastTextBaseline) {
             ForEach(0..<data.count) { d in
                 let temp: CGFloat =  CGFloat(data[d] * 45)
                 
@@ -49,7 +57,7 @@ struct GraphUpdateInsertion: View {
 }
 
 
-public struct Insertion2D: View {
+public struct Bubble2D: View {
     public init() { }
     
     // Data members
@@ -60,23 +68,23 @@ public struct Insertion2D: View {
     @State var color: Color = .red
     
     public var body: some View {
-        let data = DataFunctions().getData()
+        let data = DataManager().getData()
         
         VStack (spacing: 30) {
             if refresh {
                 withAnimation() {
-                    GraphUpdateInsertion(data: data, color: color)
+                    GraphUpdateBubble(data: data, color: color)
                 }
             }
         }
-        .frame(width: 480, height: 480)
+        .frame(width: 480, height: 490)
         .background(Color.white)
         .opacity(0.85)
         .cornerRadius(15)
         .shadow(radius: 10)
         .onReceive(
             timer, perform: { _ in
-                insertionSort(data: data)
+                bSort().bubbleSort(myData: data)
                 if(isSorted == false) {
                     if data.sorted() == data {
                         isSorted = true

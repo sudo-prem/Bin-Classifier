@@ -3,12 +3,11 @@
 <plist version="1.0">
 <dict>
 	<key>Name</key>
-	<string>ChapterTwoName</string>
+	<string>ChapterThreeName</string>
 	<key>Pages</key>
 	<array>
-		<string>InsertionSort.playgroundpage</string>
-		<string>BubbleSort.playgroundpage</string>
-		<string>MergeSort.playgroundpage</string>
+		<string>Detect Objects.playgroundpage</string>
+		<string>Classify.playgroundpage</string>
 	</array>
 </dict>
 </plist>

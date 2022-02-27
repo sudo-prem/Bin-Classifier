@@ -43,7 +43,7 @@ func Merge(data: [Int], l: Int, mid: Int, h: Int) -> Bool {
         return false
     }
     
-    DataFunctions().putData(data: arr)
+    DataManager().putData(data: arr)
     return true
 }
 
@@ -110,7 +110,7 @@ public struct Merge2D: View {
     @State var color: Color = .red
     
     public var body: some View {
-        let data = DataFunctions().getData()
+        let data = DataManager().getData()
         
         VStack (spacing: 30) {
             if refresh {

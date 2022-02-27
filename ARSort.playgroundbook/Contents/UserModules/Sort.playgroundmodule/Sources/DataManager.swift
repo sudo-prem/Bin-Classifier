@@ -2,7 +2,8 @@ import SwiftUI
 import PlaygroundSupport
 
 
-public struct DataFunctions {
+public struct DataManager {
+    
     // Public init to use in other views
     public init() { }
     

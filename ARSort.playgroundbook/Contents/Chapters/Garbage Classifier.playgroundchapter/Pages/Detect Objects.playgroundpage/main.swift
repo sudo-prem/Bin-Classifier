@@ -9,17 +9,12 @@
 import SwiftUI
 import PlaygroundSupport
 
-struct MergeSort: View {
+struct SortView: View {
     
     var body: some View {
-        ZStack {
-            BackgroundAnimation(shape: "RoundedRectangle")
-            VStack (spacing: 50) {
-                // Display Menu
-                MergeMenu()
-            }
-        }
+        // Display Menu
+        MenuView()
     }
 }
 
-PlaygroundPage.current.setLiveView(MergeSort())
+PlaygroundPage.current.setLiveView(SortView())

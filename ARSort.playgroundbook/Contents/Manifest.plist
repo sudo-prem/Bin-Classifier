@@ -5,7 +5,8 @@
 	<key>Chapters</key>
 	<array>
 		<string>Prelude.playgroundchapter</string>
-		<string>Sort.playgroundchapter</string>
+		<string>Sorting Visualiser.playgroundchapter</string>
+		<string>Garbage Classifier.playgroundchapter</string>
 		<string>Epilogue.playgroundchapter</string>
 	</array>
 	<key>ContentIdentifier</key>
