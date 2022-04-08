@@ -2,7 +2,14 @@
 //  ImagePicker.swift
 //  Sort and Classify
 //
-//  Created by Premnaath Varadharajan on 08/04/22.
+//  Created by Premnaath Varadharajan on 09/04/22.
+//
+
+//
+//  ImagePicker.swift
+//  SeeFood
+//
+//  Created by Leon Wei on 5/31/21.
 //
 
 import SwiftUI
@@ -26,7 +33,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     }
     
     typealias UIViewControllerType = UIImagePickerController
-    
+        
     
     func makeCoordinator() -> Coordinator {
         Coordinator(self)
@@ -36,7 +43,7 @@ struct ImagePicker: UIViewControllerRepresentable {
     class Coordinator: NSObject, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
         
         let parent: ImagePicker
-        
+                
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             parent.uiImage = info[.originalImage] as? UIImage
             parent.isPresenting = false
@@ -51,4 +58,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
     }
+    
+    
 }
+
