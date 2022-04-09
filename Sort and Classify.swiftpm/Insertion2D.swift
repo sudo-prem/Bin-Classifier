@@ -22,7 +22,7 @@ func insertionSort(data: [Int]) {
             while j > 0 && arr[j] < arr[j - 1]
             {
                 arr.swapAt(j, j-1)
-                DataManager().putData(data: arr)
+                Constants.K.randomData = arr
                 return
             }
         }
@@ -66,7 +66,7 @@ public struct Insertion2D: View {
     @State var color: Color = .red
     
     public var body: some View {
-        let data = DataManager().getData()
+        let data = Constants.K.randomData
         
         VStack (spacing: 30) {
             if refresh {

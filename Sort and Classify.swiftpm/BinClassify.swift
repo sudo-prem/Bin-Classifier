@@ -1,16 +1,16 @@
 //
-//  ContentView.swift
+//  BinClassify.swift
 //  Sort and Classify
 //
-//  Created by Premnaath Varadharajan on 08/04/22.
+//  Created by Premnaath Varadharajan on 09/04/22.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct BinClassify: View {
     @State var isPresenting: Bool = false
     @State var uiImage: UIImage?
-    @State var sourceType: UIImagePickerController.SourceType = .photoLibrary
+    @State var sourceType: UIImagePickerController.SourceType = .camera
     
     @ObservedObject var classifier: ImageClassifier
     
@@ -24,7 +24,7 @@ struct ContentView: View {
                     }
             }
             .font(.title)
-            .foregroundColor(.blue)
+            .foregroundColor(.red)
             
             Rectangle()
                 .strokeBorder()
@@ -79,6 +79,5 @@ struct ContentView: View {
                     }
                 }
         }
-        .padding()
     }
 }

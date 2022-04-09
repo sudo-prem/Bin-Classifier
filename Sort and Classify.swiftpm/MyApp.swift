@@ -4,7 +4,10 @@ import SwiftUI
 struct MyApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView(classifier: ImageClassifier())
+            ZStack {
+                BackgroundAnimation(shape: "Circle")
+                MainMenu()
+            }
         }
     }
 }

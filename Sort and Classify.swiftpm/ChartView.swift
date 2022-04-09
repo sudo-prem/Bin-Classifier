@@ -14,7 +14,7 @@ public struct ChartView: View {
     public init() { }
     
     public var body: some View {
-        let data: [Int] = DataManager().getData()
+        let data: [Int] = Constants.K.randomData
         
         // HStack for aligning vertical bars
         HStack (alignment: .lastTextBaseline){

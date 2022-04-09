@@ -49,7 +49,7 @@ func Merge(data: [Int], l: Int, mid: Int, h: Int) -> Bool {
         return false
     }
     
-    DataManager().putData(data: arr)
+    Constants.K.randomData = arr
     return true
 }
 
@@ -116,7 +116,7 @@ public struct Merge2D: View {
     @State var color: Color = .red
     
     public var body: some View {
-        let data = DataManager().getData()
+        let data = Constants.K.randomData
         
         VStack (spacing: 30) {
             if refresh {

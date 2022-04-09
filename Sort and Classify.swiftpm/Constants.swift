@@ -10,6 +10,9 @@ public class Constants {
     
     // Singleton
     public static let K = Constants()
+    
+    // Random Data
+    public var randomData: [Int] = [9, 8, 7, 6, 5, 4, 3, 2, 1]
 
     // Black
     public let wetWastes = [
@@ -86,7 +89,4 @@ public class Constants {
         "bowl",
         "window",
     ]
-    
-    // Random Data
-    public var randomData: [Int] = []
 }

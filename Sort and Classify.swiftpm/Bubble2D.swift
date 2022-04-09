@@ -24,7 +24,7 @@ public struct bSort {
                     sorted = false
                     data.swapAt(i, i+1)
                     bSort.x = i
-                    DataManager().putData(data: data)
+                    Constants.K.randomData = data
                     return
                 }
             }
@@ -74,7 +74,7 @@ public struct Bubble2D: View {
     @State var color: Color = .red
     
     public var body: some View {
-        let data = DataManager().getData()
+        let data = Constants.K.randomData
         
         VStack (spacing: 30) {
             if refresh {
