@@ -110,7 +110,7 @@ public struct MenuViewOne: View {
                     .shadow(radius: 10)
                 }
                 
-                // Button for 2D
+                // Visualise Button
                 Button {
                     // Add Sound Effect
                     SoundManager.instance.playSound(sound: .button)
@@ -131,6 +131,7 @@ public struct MenuViewOne: View {
                 .cornerRadius(50)
                 .opacity(0.9)
                 .shadow(radius: 10)
+                .disabled(showChart == false)
                 
             } else if(view2D) {
                 VStack (spacing: 50) {
