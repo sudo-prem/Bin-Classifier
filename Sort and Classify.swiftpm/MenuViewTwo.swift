@@ -16,11 +16,11 @@ public struct MenuViewTwo: View {
     @State var menu = true
     
     public var body: some View {
-        VStack (spacing: 50) {
+        VStack (spacing: 40) {
             // Title
             Text("Bin Classification")
                 .fontWeight(.bold)
-                .font(.system(size: 40, design: .rounded))
+                .font(.system(size: UIScreen.screenHeight/20, design: .rounded))
                 .shadow(radius: 10)
                 .foregroundColor(Color.white)
             

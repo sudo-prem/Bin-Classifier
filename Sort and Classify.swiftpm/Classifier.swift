@@ -10,7 +10,7 @@ import Vision
 import CoreImage
 
 struct Classifier {
-    
+
     private(set) var results: String?
     
     mutating func detect(ciImage: CIImage) {
@@ -21,11 +21,8 @@ struct Classifier {
         }
         
         let request = VNCoreMLRequest(model: model)
-        
         let handler = VNImageRequestHandler(ciImage: ciImage, options: [:])
-        
         try? handler.perform([request])
-        
         guard let results = request.results as? [VNClassificationObservation] else {
             return
         }
@@ -33,8 +30,6 @@ struct Classifier {
         if let firstResult = results.first {
             self.results = firstResult.identifier
         }
-        
     }
-    
 }
 

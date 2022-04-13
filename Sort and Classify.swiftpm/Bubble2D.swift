@@ -8,7 +8,6 @@
 import SwiftUI
 import Foundation
 
-
 // Bubble Sort
 public struct bSort {
     static var x: Int = 0
@@ -83,7 +82,7 @@ public struct Bubble2D: View {
                 }
             }
         }
-        .frame(width: 397, height: 490)
+        .frame(width: 400, height: 400)
         .background(Color.white)
         .opacity(0.85)
         .cornerRadius(15)

@@ -13,8 +13,6 @@ public class SoundManager {
     public static let instance = SoundManager()
     public var player: AVAudioPlayer?
     public enum SoundOption: String {
-        case tada
-        case beep
         case button
         case arbutton
         case whoosh

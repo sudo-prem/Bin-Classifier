@@ -16,116 +16,123 @@ struct MainMenu: View {
     
     var body: some View {
         
-        VStack (spacing: 50) {
+        ZStack {
             
-            if menu {
-                
-                // Title
-                Text("Sort and Classify")
-                    .fontWeight(.bold)
-                    .font(.system(size: 40, design: .rounded))
+            BackgroundAnimation(shape: "Circle")
+            
+            VStack (spacing: 30) {
+                if menu {
+                    
+                    // Title
+                    Text("Sort and Classify")
+                        .fontWeight(.bold)
+                        .font(.system(size: UIScreen.screenHeight/20, design: .rounded))
+                        .shadow(radius: 10)
+                        .foregroundColor(Color.white)
+                        .padding(.top, 49)
+                    
+                    // Button for Sort Visualisation
+                    Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
+                        withAnimation() {
+                            menu = false
+                            menuOne = true
+                        }
+                    } label: {
+                        Label("Sort Visualisation", systemImage: "chart.bar.xaxis")
+                            .frame(width: 200 , height: 50, alignment: .center)
+                            .font(.system(size: 20))
+                    }
+                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(50)
+                    .opacity(0.9)
                     .shadow(radius: 10)
-                    .foregroundColor(Color.white)
-                
-                // Button for Sort Visualisation
-                Button {
-                    // Add Sound Effect
-                    SoundManager.instance.playSound(sound: .button)
                     
-                    // Add Animation
-                    withAnimation() {
-                        menuOne = true
-                        menu = false
+                    // Button for Waste Sorting
+                    Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
+                        withAnimation() {
+                            menu = false
+                            menuTwo = true
+                        }
+                    } label: {
+                        Label("Bin Classification", systemImage: "trash.fill")
+                            .frame(width: 200 , height: 50, alignment: .center)
+                            .font(.system(size: 20))
                     }
-                } label: {
-                    Label("Sort Visualisation", systemImage: "chart.bar.xaxis")
-                        .frame(width: 200 , height: 50, alignment: .center)
-                        .font(.system(size: 20))
-                }
-                .foregroundColor(.red)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(50)
-                .opacity(0.9)
-                .shadow(radius: 10)
-                
-                // Button for Waste Sorting
-                Button {
-                    // Add Sound Effect
-                    SoundManager.instance.playSound(sound: .button)
+                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(50)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                    .padding(.bottom, 49)
                     
-                    // Add Animation
-                    withAnimation() {
-                        menuTwo = true
-                        menu = false
-                    }
-                } label: {
-                    Label("Bin Classification", systemImage: "trash")
-                        .frame(width: 200 , height: 50, alignment: .center)
-                        .font(.system(size: 20))
-                }
-                .foregroundColor(.red)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(50)
-                .opacity(0.9)
-                .shadow(radius: 10)
-                
-            } else if menuOne {
-                
-                MenuViewOne()
-                
-                // Home Button
-                Button {
-                    // Add Sound Effect
-                    SoundManager.instance.playSound(sound: .button)
+                } else if menuOne {
                     
-                    // Add Animation
-                    withAnimation() {
-                        menu = true
-                        menuOne = false
-                        menuTwo = false
-                    }
-                } label: {
-                    Image(systemName: "house.circle")
-                        .frame(width: 30 , height: 30)
-                        .font(.system(size: 40))
-                }
-                .foregroundColor(.red)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(50)
-                .opacity(0.9)
-                .shadow(radius: 10)
-                .frame(alignment: .bottom)
-                
-            } else if menuTwo {
-                
-                MenuViewTwo()
-                
-                // Home Button
-                Button {
-                    // Add Sound Effect
-                    SoundManager.instance.playSound(sound: .button)
+                    MenuViewOne()
+                        .padding(.top, 49)
                     
-                    // Add Animation
-                    withAnimation() {
-                        menu = true
-                        menuOne = false
-                        menuTwo = false
+                    // Home Button
+                    Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
+                        withAnimation() {
+                            menu = true
+                            menuOne = false
+                            menuTwo = false
+                        }
+                    } label: {
+                        Image(systemName: "house.circle")
+                            .frame(width: 30 , height: 30)
+                            .font(.system(size: 40))
                     }
-                } label: {
-                    Image(systemName: "house.circle")
-                        .frame(width: 30 , height: 30)
-                        .font(.system(size: 40))
+                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(50)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                    .padding(.bottom, 49)
+                    
+                } else if menuTwo {
+                    
+                    MenuViewTwo()
+                    
+                    // Home Button
+                    Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
+                        withAnimation() {
+                            menu = true
+                            menuOne = false
+                            menuTwo = false
+                        }
+                    } label: {
+                        Image(systemName: "house.circle")
+                            .frame(width: 30 , height: 30)
+                            .font(.system(size: 40))
+                    }
+                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(50)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                    .padding(.bottom, 49)
                 }
-                .foregroundColor(.red)
-                .padding()
-                .background(Color.white)
-                .cornerRadius(50)
-                .opacity(0.9)
-                .shadow(radius: 10)
-                .frame(alignment: .bottom)
             }
         }
     }

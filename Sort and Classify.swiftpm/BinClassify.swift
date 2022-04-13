@@ -15,60 +15,64 @@ struct BinClassify: View {
     @ObservedObject var classifier: ImageClassifier
     
     var body: some View {
-        VStack{
-            HStack{
-                Image(systemName: "camera")
-                    .onTapGesture {
-                        isPresenting = true
-                        sourceType = .camera
-                    }
-            }
-            .font(.title)
-            .foregroundColor(.red)
+        VStack (spacing: 30){
             
-            Rectangle()
-                .strokeBorder()
-                .foregroundColor(.yellow)
-                .overlay(
-                    Group {
-                        if uiImage != nil {
-                            Image(uiImage: uiImage!)
-                                .resizable()
-                                .scaledToFit()
-                        }
-                    }
-                )
-            
-            
-            VStack{
-                Button(action: {
-                    if uiImage != nil {
-                        classifier.detect(uiImage: uiImage!)
-                    }
-                }) {
-                    Image(systemName: "bolt.fill")
-                        .foregroundColor(.orange)
-                        .font(.title)
-                }
-                
-                
+            if uiImage != nil {
                 Group {
-                    if let imageClass = classifier.imageClass {
-                        HStack{
-                            Text("Image categories:")
-                                .font(.caption)
-                            Text(imageClass)
-                                .bold()
-                        }
-                    } else {
-                        HStack {
-                            Text("Image categories: N/A")
-                                .font(.caption)
-                        }
-                    }
+                    Rectangle()
+                        .overlay(
+                            Group {
+                                Image(uiImage: uiImage!)
+                                    .resizable()
+                                    .frame(width: 300, height: 240)
+                                    .scaledToFit()
+                            }
+                        )
+                        .frame(width: 300, height: 240)
+                        .cornerRadius(16)
                 }
-                .font(.subheadline)
                 .padding()
+                .overlay(
+                    RoundedRectangle(cornerRadius: 16)
+                        .stroke(Color.white, lineWidth: 7)
+                )
+            }
+            
+            Button {
+                // Add Sound Effect
+                SoundManager.instance.playSound(sound: .button)
+                
+                isPresenting = true
+            } label: {
+                Label("Detect Waste", systemImage: "trash.fill")
+                    .frame(width: 200 , height: 50, alignment: .center)
+                    .font(.system(size: 20))
+            }
+            .foregroundColor(.red)
+            .padding()
+            .background(Color.white)
+            .cornerRadius(50)
+            .opacity(0.9)
+            .shadow(radius: 10)
+            
+            
+            Group {
+                if let imageClass = classifier.imageClass {
+                    HStack{
+                        Text("Detected Object: ")
+                            .font(.caption)
+                        Text(imageClass)
+                            .bold()
+                    }
+                    .font(.subheadline)
+                    .padding()
+                } else {
+                    HStack {
+                        Text(" ")
+                            .font(.caption)
+                    }
+                    .font(.subheadline)
+                }
             }
         }
         .sheet(isPresented: $isPresenting){

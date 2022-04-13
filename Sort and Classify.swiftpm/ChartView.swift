@@ -7,7 +7,6 @@
 
 import SwiftUI
 
-
 public struct ChartView: View {
     
     // Public init to use in other views
