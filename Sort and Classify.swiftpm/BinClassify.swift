@@ -58,8 +58,8 @@ struct BinClassify: View {
             
             if let imageClass = classifier.imageClass {
                 
-                if Constants.K.wetWastes.contains(imageClass) {
-                    VStack {
+                VStack {
+                    if Constants.K.wetWastes.contains(imageClass) {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.black)
@@ -77,16 +77,7 @@ struct BinClassify: View {
                         Text("As it is a Wet Waste, it can be disposed in the Black Bin.")
                             .foregroundColor(.black)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
-                    }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                } else if (Constants.K.electronicWastes.contains(imageClass)) {
-                    VStack {
+                    } else if (Constants.K.electronicWastes.contains(imageClass)) {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.brown)
@@ -104,16 +95,7 @@ struct BinClassify: View {
                         Text("As it is an Electronic Waste, it can be disposed in the Brown Bin.")
                             .foregroundColor(.brown)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
-                    }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                } else if (Constants.K.paperWastes.contains(imageClass)) {
-                    VStack {
+                    } else if (Constants.K.paperWastes.contains(imageClass)) {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.blue)
@@ -131,16 +113,7 @@ struct BinClassify: View {
                         Text("As it is a Paper Waste, it can be disposed in the Blue Bin.")
                             .foregroundColor(.blue)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
-                    }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                } else if (Constants.K.plasticWastes.contains(imageClass)) {
-                    VStack {
+                    } else if (Constants.K.plasticWastes.contains(imageClass)) {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.yellow)
@@ -158,16 +131,7 @@ struct BinClassify: View {
                         Text("As it is a Plastic Waste, it can be disposed in the Yellow Bin.")
                             .foregroundColor(.yellow)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
-                    }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                } else if (Constants.K.metalWastes.contains(imageClass)) {
-                    VStack {
+                    } else if (Constants.K.metalWastes.contains(imageClass)) {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.red)
@@ -185,16 +149,7 @@ struct BinClassify: View {
                         Text("As it is an Metal Waste, it can be disposed in the Red Bin.")
                             .foregroundColor(.red)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
-                    }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                } else if (Constants.K.glassWastes.contains(imageClass)) {
-                    VStack {
+                    } else if (Constants.K.glassWastes.contains(imageClass)) {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.green)
@@ -212,16 +167,7 @@ struct BinClassify: View {
                         Text("As it is a Glass Waste, it can be disposed in the Green Bin.")
                             .foregroundColor(.brown)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
-                    }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                } else {
-                    VStack {
+                    } else {
                         HStack {
                             Image(systemName: "trash.fill")
                                 .foregroundColor(Color.gray)
@@ -229,7 +175,7 @@ struct BinClassify: View {
                             
                             Text("Gray Bin - Other Waste")
                                 .font(.system(size: 21, design: .rounded))
-                                .foregroundColor(Color.blue)
+                                .foregroundColor(Color.gray)
                         }
                         
                         Text("Detected Object(s): \(imageClass)")
@@ -239,15 +185,14 @@ struct BinClassify: View {
                         Text("As it is of no specific category, it can be disposed in the Gray Bin.")
                             .foregroundColor(.gray)
                             .font(.system(size: 17, design: .rounded))
-                            .padding()
                     }
-                    .font(.subheadline)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(16)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
                 }
+                .font(.subheadline)
+                .padding()
+                .background(Color.white)
+                .cornerRadius(16)
+                .opacity(0.9)
+                .shadow(radius: 10)
             } else {
                 HStack {
                     Text(" ")
