@@ -96,7 +96,7 @@ struct Insertion3D: View {
             .opacity(0.9)
             .shadow(radius: 10)
             .frame(maxHeight: .infinity, alignment: .bottom)
-            .padding(100)
+            .padding(.bottom, 17)
         }
         .onReceive(
             timer, perform: { _ in

@@ -89,4 +89,6 @@ public class Constants {
         "bowl",
         "window",
     ]
+    
+    // Gray - Other Wastes
 }

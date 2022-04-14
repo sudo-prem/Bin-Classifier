@@ -206,19 +206,34 @@ public struct MenuViewOne: View {
                     // Sort in 3D
                     if( selectedSort == "Bubble Sort") {
                         Bubble3D()
-                            .padding(.leading, 49)
-                            .padding(.trailing, 49)
+                            .frame(width: UIScreen.screenWidth/1.4, height: UIScreen.screenHeight/2)
+                            .cornerRadius(16)
                             .shadow(radius: 10)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.white, lineWidth: 7)
+                            )
                     } else if(selectedSort == "Insertion Sort") {
                         Insertion3D()
-                            .padding(.leading, 49)
-                            .padding(.trailing, 49)
+                            .frame(width: UIScreen.screenWidth/1.4, height: UIScreen.screenHeight/2)
+                            .cornerRadius(16)
                             .shadow(radius: 10)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.white, lineWidth: 7)
+                            )
                     } else if(selectedSort == "Merge Sort") {
                         Merge3D()
-                            .padding(.leading, 49)
-                            .padding(.trailing, 49)
+                            .frame(width: UIScreen.screenWidth/1.4, height: UIScreen.screenHeight/2)
+                            .cornerRadius(16)
                             .shadow(radius: 10)
+                            .padding()
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 16)
+                                    .stroke(Color.white, lineWidth: 7)
+                            )
                     }
                     
                     // Back Button

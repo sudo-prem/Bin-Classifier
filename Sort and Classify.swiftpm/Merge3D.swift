@@ -102,7 +102,7 @@ struct Merge3D: View {
             {
                 // Style the button
                 Image(systemName: "cube.transparent")
-                    .frame(width: UIScreen.screenWidth/20 , height: UIScreen.screenHeight/20)
+                    .frame(width: 30 , height: 30)
                     .font(.system(size: 40))
             }
             .foregroundColor(.red)
@@ -112,7 +112,7 @@ struct Merge3D: View {
             .opacity(0.9)
             .shadow(radius: 10)
             .frame(maxHeight: .infinity, alignment: .bottom)
-            .padding(100)
+            .padding(.bottom, 17)
         }
         .onReceive(
             timer, perform: { _ in

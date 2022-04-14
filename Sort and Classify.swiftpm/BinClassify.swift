@@ -44,7 +44,7 @@ struct BinClassify: View {
                 
                 isPresenting = true
             } label: {
-                Label("Detect Waste", systemImage: "trash.fill")
+                Label("Detect Waste", systemImage: "camera.viewfinder")
                     .frame(width: 200 , height: 50, alignment: .center)
                     .font(.system(size: 20))
             }
@@ -56,23 +56,204 @@ struct BinClassify: View {
             .shadow(radius: 10)
             
             
-            Group {
-                if let imageClass = classifier.imageClass {
-                    HStack{
-                        Text("Detected Object: ")
-                            .font(.caption)
-                        Text(imageClass)
-                            .bold()
+            if let imageClass = classifier.imageClass {
+                
+                if Constants.K.wetWastes.contains(imageClass) {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.black)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Black Bin - Wet Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.black)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.black)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is a Wet Waste, it can be disposed in the Black Bin.")
+                            .foregroundColor(.black)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
                     }
                     .font(.subheadline)
                     .padding()
-                } else {
-                    HStack {
-                        Text(" ")
-                            .font(.caption)
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                } else if (Constants.K.electronicWastes.contains(imageClass)) {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.brown)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Brown Bin - Electronic Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.brown)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.brown)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is an Electronic Waste, it can be disposed in the Brown Bin.")
+                            .foregroundColor(.brown)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
                     }
                     .font(.subheadline)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                } else if (Constants.K.paperWastes.contains(imageClass)) {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.blue)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Blue Bin - Paper Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.blue)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is a Paper Waste, it can be disposed in the Blue Bin.")
+                            .foregroundColor(.blue)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                    }
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                } else if (Constants.K.plasticWastes.contains(imageClass)) {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.yellow)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Yellow Bin - Plastic Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.yellow)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.yellow)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is a Plastic Waste, it can be disposed in the Yellow Bin.")
+                            .foregroundColor(.yellow)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                    }
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                } else if (Constants.K.metalWastes.contains(imageClass)) {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.red)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Red Bin - Metal Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.red)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.red)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is an Metal Waste, it can be disposed in the Red Bin.")
+                            .foregroundColor(.red)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                    }
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                } else if (Constants.K.glassWastes.contains(imageClass)) {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.green)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Green Bin - Glass Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.green)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.brown)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is a Glass Waste, it can be disposed in the Green Bin.")
+                            .foregroundColor(.brown)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                    }
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
+                } else {
+                    VStack {
+                        HStack {
+                            Image(systemName: "trash.fill")
+                                .foregroundColor(Color.gray)
+                                .font(.system(size: 28, design: .rounded))
+                            
+                            Text("Gray Bin - Other Waste")
+                                .font(.system(size: 21, design: .rounded))
+                                .foregroundColor(Color.blue)
+                        }
+                        
+                        Text("Detected Object(s): \(imageClass)")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                        Text("As it is of no specific category, it can be disposed in the Gray Bin.")
+                            .foregroundColor(.gray)
+                            .font(.system(size: 17, design: .rounded))
+                            .padding()
+                    }
+                    .font(.subheadline)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(16)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
                 }
+            } else {
+                HStack {
+                    Text(" ")
+                        .font(.caption)
+                }
+                .font(.subheadline)
             }
         }
         .sheet(isPresented: $isPresenting){
