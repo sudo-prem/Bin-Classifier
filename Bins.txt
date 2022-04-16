@@ -1,0 +1,29 @@
+// Black
+public let wetWastes = [
+
+]
+
+// Brown
+public let electronicWastes = [
+
+]
+
+// Blue
+public let paperWastes = [
+
+]
+
+// Yellow
+public let plasticWastes = [
+
+]
+
+// Red
+public let metalWastes = [
+
+]
+
+// Green
+public let glassWastes = [
+
+]
