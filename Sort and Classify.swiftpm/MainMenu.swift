@@ -24,7 +24,7 @@ struct MainMenu: View {
                 if menu {
                     
                     // Title
-                    Text("Sort and Classify")
+                    Text("Bin Classifier")
                         .fontWeight(.bold)
                         .font(.system(size: UIScreen.screenHeight/20, design: .rounded))
                         .shadow(radius: 10)
@@ -42,7 +42,7 @@ struct MainMenu: View {
                             menuOne = true
                         }
                     } label: {
-                        Label("Sort Visualisation", systemImage: "chart.bar.xaxis")
+                        Label("Login", systemImage: "person.text.rectangle")
                             .frame(width: 200 , height: 50, alignment: .center)
                             .font(.system(size: 20))
                     }
