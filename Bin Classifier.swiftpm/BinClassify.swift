@@ -13,9 +13,34 @@ struct BinClassify: View {
     @State var sourceType: UIImagePickerController.SourceType = .camera
     
     @ObservedObject var classifier: ImageClassifier
+    public var counts = Constants.K.binStats
+    
+    func statsFunction() {
+        // ["Black", "Brown", "Blue", "Yellow", "Red", "Green", "Gray"]
+        
+        if let temp = self.classifier.imageClass {
+            if(Constants.K.wetWastes.contains(temp)) {
+                Constants.K.binStats[0] = Constants.K.binStats[0] + 1
+            } else if(Constants.K.electronicWastes.contains(temp)) {
+                Constants.K.binStats[1] = Constants.K.binStats[1] + 1
+            } else if(Constants.K.paperWastes.contains(temp)) {
+                Constants.K.binStats[2] = Constants.K.binStats[2] + 1
+            } else if(Constants.K.plasticWastes.contains(temp)) {
+                Constants.K.binStats[3] = Constants.K.binStats[3] + 1
+            } else if(Constants.K.metalWastes.contains(temp)) {
+                Constants.K.binStats[4] = Constants.K.binStats[4] + 1
+            } else if(Constants.K.glassWastes.contains(temp)) {
+                Constants.K.binStats[5] = Constants.K.binStats[5] + 1
+            } else {
+                Constants.K.binStats[6] = Constants.K.binStats[6] + 1
+            }
+        }
+    }
     
     var body: some View {
-        VStack (spacing: 30){
+        
+        self.statsFunction()
+        return VStack (spacing: 30) {
             
             if uiImage != nil {
                 Group {

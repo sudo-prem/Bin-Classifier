@@ -11,8 +11,8 @@ public class Constants {
     // Singleton
     public static let K = Constants()
     
-    // Random Data
-    public var randomData: [Int] = [9, 8, 7, 6, 5, 4, 3, 2, 1]
+    // Collected Stats
+    public var binStats: [Int] = [1, 1, 1, 1, 1, 1, 1]
 
     // Black
     public let wetWastes = [
@@ -63,6 +63,7 @@ public class Constants {
     
     // Yellow
     public let plasticWastes = [
+        "rule, ruler",
         "water bottle",
         "umbrella",
         "ping-pong ball",
@@ -84,6 +85,7 @@ public class Constants {
     
     // Red
     public let metalWastes = [
+        "screw",
         "plate",
         "street sign",
         "nail",
@@ -114,7 +116,6 @@ public class Constants {
         "vase",
         "sunglasses, dark glasses, shades",
         "sunglass",
-        "rule, ruler",
         "magnetic compass",
         "hourglass",
         "coffeepot",

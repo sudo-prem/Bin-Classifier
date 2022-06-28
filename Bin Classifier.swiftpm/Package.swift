@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Sort and Classify",
+    name: "Bin Classifier",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "Sort and Classify",
+            name: "Bin Classifier",
             targets: ["AppModule"],
             bundleIdentifier: "com.premnaath.Sort-and-Classify",
             teamIdentifier: "B3HT7K2KW8",

@@ -1,15 +1,14 @@
 //
-//  MenuViewTwo.swift
+//  MenuViewOne.swift
 //  Sort and Classify
 //
 //  Created by Premnaath Varadharajan on 09/04/22.
 //
 
 import SwiftUI
-import Foundation
 
-
-public struct MenuViewTwo: View {
+public struct MenuViewOne: View {
+    
     public init() { }
     
     // Data Members
@@ -29,3 +28,4 @@ public struct MenuViewTwo: View {
         }
     }
 }
+

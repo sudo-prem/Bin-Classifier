@@ -31,28 +31,6 @@ struct MainMenu: View {
                         .foregroundColor(Color.white)
                         .padding(.top, 49)
                     
-                    // Button for Sort Visualisation
-                    Button {
-                        // Add Sound Effect
-                        SoundManager.instance.playSound(sound: .button)
-                        
-                        // Add Animation
-                        withAnimation() {
-                            menu = false
-                            menuOne = true
-                        }
-                    } label: {
-                        Label("Login", systemImage: "person.text.rectangle")
-                            .frame(width: 200 , height: 50, alignment: .center)
-                            .font(.system(size: 20))
-                    }
-                    .foregroundColor(.red)
-                    .padding()
-                    .background(Color.white)
-                    .cornerRadius(50)
-                    .opacity(0.9)
-                    .shadow(radius: 10)
-                    
                     // Button for Waste Sorting
                     Button {
                         // Add Sound Effect
@@ -61,7 +39,7 @@ struct MainMenu: View {
                         // Add Animation
                         withAnimation() {
                             menu = false
-                            menuTwo = true
+                            menuOne = true
                         }
                     } label: {
                         Label("Bin Classification", systemImage: "trash.fill")
@@ -75,6 +53,29 @@ struct MainMenu: View {
                     .opacity(0.9)
                     .shadow(radius: 10)
                     .padding(.bottom, 49)
+                    
+                    // Button for Sort Visualisation
+                    Button {
+                        // Add Sound Effect
+                        SoundManager.instance.playSound(sound: .button)
+                        
+                        // Add Animation
+                        withAnimation() {
+                            menu = false
+                            menuOne = false
+                            menuTwo = true
+                        }
+                    } label: {
+                        Label("Stats", systemImage: "mail.stack.fill")
+                            .frame(width: 200 , height: 50, alignment: .center)
+                            .font(.system(size: 20))
+                    }
+                    .foregroundColor(.red)
+                    .padding()
+                    .background(Color.white)
+                    .cornerRadius(50)
+                    .opacity(0.9)
+                    .shadow(radius: 10)
                     
                 } else if menuOne {
                     

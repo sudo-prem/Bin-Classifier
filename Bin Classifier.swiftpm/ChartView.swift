@@ -13,7 +13,8 @@ public struct ChartView: View {
     public init() { }
     
     public var body: some View {
-        let data: [Int] = Constants.K.randomData
+        let data: [Int] = Constants.K.binStats
+        let colors: [Color] = [.black, .brown, .blue, .yellow, .red, .green, .gray]
         
         // HStack for aligning vertical bars
         HStack (alignment: .lastTextBaseline){
@@ -21,13 +22,13 @@ public struct ChartView: View {
                 let temp: CGFloat =  CGFloat(data[d] * 10)
                 VStack {
                     Rectangle()
-                        .fill(Color.red)
+                        .fill(colors[d])
                         .frame(width: 30, height: temp)
                         .cornerRadius(5)
                         .shadow(radius: 3)
-                    Text("\(data[d])")
-                        .foregroundColor(Color.black)
-                        .opacity(0.7)
+                    Image(systemName: "trash.fill")
+                        .foregroundColor(colors[d])
+                        .font(.system(size: 28, design: .rounded))
                 }
             }
         }
