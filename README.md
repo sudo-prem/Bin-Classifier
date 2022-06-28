@@ -1,3 +1,3 @@
-# Sort-Visualizer-iOS
+# Bin-Classifier
 
-An Augmented Reality SwiftUI playground, that helps visualizing different sorting algorithms.
+A SwiftUI playground app, that helps classify wastes based on their Bin type.
